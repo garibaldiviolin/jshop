@@ -4,7 +4,10 @@
   <groupId>br.marketplace</groupId>
   <artifactId>jshop</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>
+    <!--1.0-SNAPSHOT-->
+    debug    
+  </version>
   <name>jshop</name>
   <url>http://maven.apache.org</url>
   <dependencies>
