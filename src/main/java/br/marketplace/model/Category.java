@@ -37,7 +37,7 @@ public class Category implements Serializable {
 		return description;
 	}
 
-	public void setId(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 }
