@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.marketplace.utils.WebSiteEndpoints;
 import br.marketplace.service.CategoryService;
 import br.marketplace.model.Category;
 
@@ -18,7 +19,7 @@ public class IndexController {
 	private CategoryService service; //	Injeta a classe de serviços
 	
 	//Vai para tela principal do CRUD aonde são listados todos as categorias
-	@GetMapping("/")
+	@GetMapping(value = WebSiteEndpoints.INDEX)
 	public ModelAndView findAll() {
 		
 		ModelAndView mv = new ModelAndView("/category");
@@ -28,7 +29,7 @@ public class IndexController {
 	}
 	
 	//Vai para tela de adição de category
-	@GetMapping("/add")
+	@GetMapping(value = WebSiteEndpoints.CATEGORY_ADD)
 	public ModelAndView add(Category category) {
 		
 		ModelAndView mv = new ModelAndView("/categoryAdd");
@@ -38,14 +39,14 @@ public class IndexController {
 	}
 	
 	//Vai para tela de edição de categorias (mesma tela de adição, contudo é enviado para a view um objeto que já existe)
-	@GetMapping("/edit/{id}")
+	@GetMapping(value = WebSiteEndpoints.CATEGORY_EDIT)
 	public ModelAndView edit(@PathVariable("id") Long id) {
 		
 		return add(service.getOne(id));
 	}
 	
 	//Exclui um category por seu ID e redireciona para a tela principal
-	@GetMapping("/delete/{id}")
+	@GetMapping(value = WebSiteEndpoints.CATEGORY_DELETE)
 	public ModelAndView delete(@PathVariable("id") Long id) {
 		
 		service.delete(id);
@@ -56,7 +57,7 @@ public class IndexController {
 	//Recebe um objeto preenchido do Thymeleaf e valida 
 	//Se tudo estiver ok, salva e volta para tela principal
 	//Se houver erro, retorna para tela atual exibindo as mensagens de erro
-	@PostMapping("/save")
+	@GetMapping(value = WebSiteEndpoints.CATEGORY_SAVE)
 	public ModelAndView save(Category category, BindingResult result) {
 		
 		if(result.hasErrors()) {
