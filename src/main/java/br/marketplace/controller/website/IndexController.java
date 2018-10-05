@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.marketplace.utils.WebSiteEndpoints;
 import br.marketplace.service.CategoryService;
 import br.marketplace.model.Category;
+import br.marketplace.utils.WebSiteEndpoints;
 
 @Controller
 public class IndexController {
@@ -19,7 +19,7 @@ public class IndexController {
 	private CategoryService service; //	Injeta a classe de serviços
 	
 	//Vai para tela principal do CRUD aonde são listados todos as categorias
-	@GetMapping(value = WebSiteEndpoints.INDEX)
+	@GetMapping(value = WebSiteEndpoints.CATEGORY_INDEX)
 	public ModelAndView findAll() {
 		
 		ModelAndView mv = new ModelAndView("/category");
@@ -57,7 +57,7 @@ public class IndexController {
 	//Recebe um objeto preenchido do Thymeleaf e valida 
 	//Se tudo estiver ok, salva e volta para tela principal
 	//Se houver erro, retorna para tela atual exibindo as mensagens de erro
-	@GetMapping(value = WebSiteEndpoints.CATEGORY_SAVE)
+	@PostMapping(value = WebSiteEndpoints.CATEGORY_SAVE)
 	public ModelAndView save(Category category, BindingResult result) {
 		
 		if(result.hasErrors()) {
