@@ -44,7 +44,6 @@ public abstract class ProductBase {
     private Float price;
 
     @OneToOne
-    @Column(nullable = false)
     @NotBlank(message = "This column is required")
     @NotNull(message = "This column is required")
     private Category category;
